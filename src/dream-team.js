@@ -14,17 +14,17 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function createDreamTeam(members) {
-  throw new NotImplementedError('Not implemented');
-  ///dodelat
-  let result = [];
-  members.sort();
-  console.log(members);
-  members.forEach((member, index) => {
-    if(typeof(member) == 'string'){
-      result.push(member.trim()[0].toUpperCase());
-    }
+  if (members == null) {
+    return false;
+  }
 
+  members = Array.from(members);
+  
+  let result = members.map(function(item, index){
+    if(typeof(item) == 'string') return item.trim()[0].toUpperCase();
   });
+
+  result.sort();
 
   return result.join('');
 }
